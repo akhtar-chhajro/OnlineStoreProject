@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up form</title>
+    
+    <!-- Bootstrap CDN Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* background-color: #f3f4f6; */
+            background: radial-gradient(circle at 10% 20% ,#795a29 0%, transparent 50%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right:10px;
+            padding-left: 10px;
+            margin: 0;
+        }
+
+
+
+/* Navbar */
+.navbar {
+  /* background: transparent; */
+  padding: 0.8rem 1.5rem;
+  z-index: 1000;
+}
+.navbar-brand img {
+  height: 50px;
+}
+.nav-link {
+  color: black !important;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+.nav-link:hover {
+  color: #f39c12 !important;
+}
+.nav-link i {
+  margin-right: 6px;
+  color: #f39c12;
+}
+.dropdown-menu {
+  background-color: #222;
+  border-radius: 10px;
+}
+.dropdown-menu .dropdown-item {
+  color: #ddd;
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: #333;
+  color: #f39c12;
+}
+
+.navbar {
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  background-color: transparent;
+}
+
+.navbar.scrolled {
+  background-color: white !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar.scrolled .nav-link {
+  color: #333 !important;
+}
+
+.navbar.scrolled .nav-link:hover {
+  color: #f39c12 !important;
+}
+
+.navbar.scrolled .navbar-brand img {
+  filter: none; /* remove any filter if you have */
+}
+
+
+/* ✅ Padding fixes for mobile view */
+@media (max-width: 992px) {
+  /* Logo padding */
+  .navbar-brand {
+    padding-left: 15px;
+  }
+
+  /* Menu items inside toggle */
+  .navbar-nav .nav-item {
+    padding-left: 15px;
+  }
+
+  /* Dropdown items inside toggle */
+  .navbar-nav .dropdown-menu .dropdown-item {
+    padding-left: 20px;
+  }
+}
+
+        .signup-container {
+            width: 100%;
+            max-width: 600px;
+            padding-top: 99px;
+        }
+
+        #messageBox {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            transition: opacity 0.3s, visibility 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        #messageBox.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Golden theme */
+        .btn-primary {
+            --bs-btn-bg: #f39c12; 
+            --bs-btn-border-color: #f39c12;
+            --bs-btn-hover-bg: #d8890f; 
+            --bs-btn-hover-border-color: #d8890f;
+            --bs-btn-active-bg: #d8890f;
+            --bs-btn-active-border-color: #d8890f;
+        }
+
+        a {
+            color: #f39c12;
+            text-decoration: none;
+        }
+      
+      
+
+        .text-secondary a {
+            color: #f39c12 !important;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .separator-line {
+            flex-grow: 1;
+            border-top: 1px solid #D1D5DB;
+        }
+        .separator-text {
+            flex-shrink: 0;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            font-size: 0.875rem;
+            color: #6B7280;
+        }
+
+        .social-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            background-color: #fff;
+        }
+
+        .input-group-text {
+            background-color: white;
+            color: #6B7280;
+        }
+
+        .password-toggle {
+            cursor: pointer;
+            border-left: none;
+            transition: all 0.2s;
+        }
+
+.form-control:focus {
+  z-index: 2;
+    border-color: #f39c12 !important;
+    box-shadow: 0 0 0 0.25rem rgba(243, 156, 18, 0.25) !important;
+}
+
+.form-control:hover {
+    border-color: #f39c12 !important;
+}
+
+/* ✅ For prepend/append icons in input fields */
+.input-group-text:focus,
+.input-group-text:hover {
+    border-color: #f39c12 !important;
+}
+
+
+/* Chat Button */
+.live-chat-btn {
+  position: fixed;
+  bottom: 30px;
+  left: 30px; /* ✅ LEFT SIDE */
+  background-color: #f39c12; /* ✅ Accent Color */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 15px 18px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 9999;
+  transition: background-color 0.3s ease;
+}
+
+.live-chat-btn:hover {
+  background-color: rgba(243, 156, 18, 0.8);
+}
+
+/* Chat Box */
+.live-chat-box {
+  position: fixed;
+  bottom: 80px;
+  left: 30px; /* ✅ LEFT SIDE */
+  width: 320px;
+  max-height: 450px;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+  animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Header */
+.chat-header {
+  background-color: #f39c12; /* ✅ Accent Color */
+  color: white;
+  padding: 12px 15px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.chat-header button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Messages */
+.chat-messages {
+  padding: 12px;
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Message Bubbles */
+.message {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 20px;
+  line-height: 1.3;
+  animation: fadeIn 0.3s ease;
+}
+
+.user-message {
+  background-color: #f39c12; /* ✅ Accent Color */
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.bot-message {
+  background-color: #e9ecef;
+  color: #212529;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(5px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Input Area */
+.chat-input-area {
+  display: flex;
+  border-top: 1px solid #dee2e6;
+  padding: 8px;
+  background: white;
+}
+
+#chatInput {
+  flex-grow: 1;
+  border: 1px solid #ced4da;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#chatInput:focus {
+  border-color: #f39c12; /* ✅ Accent Color */
+}
+
+#sendBtn {
+  margin-left: 8px;
+  background-color: #f39c12; /* ✅ Accent Color */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+#sendBtn:hover {
+  background-color: rgba(243, 156, 18, 0.8);
+}
+
+
+/* Footer Glass Style *//* Footer Glass Dark Style */
+.footer-glass {
+  background: rgba(20, 20, 20, 0.85); /* dark background */
+  backdrop-filter: blur(12px);
+  color: #fff;
+  /* padding: 60px 20px 20px; */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+  justify-content: space-between;
+  padding-top: 20px;
+  
+}
+
+.footer-col {
+  flex: 1 1 220px;
+  min-width: 200px;
+}
+
+.footer-logo {
+  height: 50px;
+  margin-bottom: 15px;
+}
+
+.footer-col h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #f39c12;
+}
+
+.footer-col p {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #f39c12;
+}
+
+/* Social Links */
+.social-links a {
+  color: #fff;
+  margin-right: 15px;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #f39c12;
+}
+
+/* Newsletter */
+.newsletter form {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.newsletter input[type="email"] {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.newsletter input::placeholder {
+  color: #aaa;
+}
+
+.newsletter button {
+  background: #f39c12;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.newsletter button:hover {
+  background: #e6b800;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  margin-top: 40px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 15px;
+  font-size: 0.85rem;
+  color: #bbb;
+}
+
+.footer-bottom a {
+  color: #bbb;
+  text-decoration: underline;
+  margin: 0 5px;
+}
+
+.footer-bottom a:hover {
+  color: #f39c12;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .newsletter form {
+    flex-direction: column;
+  }
+
+  .newsletter button {
+    width: 100%;
+  }
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #111, #1c1c1c);
+  background: radial-gradient(circle at 10% 20% ,#795a29 0%, transparent 55%);
+}
+
+footer {
+  width: 100%;
+  margin-top: 25px;
+}
+
+
+
+    </style>
+</head>
+<body>
+    
+
+ 
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid">
+
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="./IMG/logo.webp" alt="logo">
+    </a>
+
+    
+
+    <!-- Toggle Button -->
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <i class="fas fa-bars" style="color: #000;"></i>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Centered Menu -->
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="index1.html"><i class="fas fa-home"></i> Home</a></li>
+
+      
+        <li class="nav-item"><a class="nav-link" href="brands.html"><i class="fas fa-tags me-1"></i> Brands</a></li>
+        <li class="nav-item"><a class="nav-link" href="compare.html"><i class="fas fa-tshirt me-1"></i> Compare</a></li>
+
+        <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fas fa-envelope me-1"></i> Contact</a></li>
+       
+        <!-- ✅ Cart inside dropdown (mobile) -->
+        <li class="nav-item d-lg-none">
+          <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+        </li>
+
+        <!-- ✅ Account inside dropdown (mobile) -->
+        <li class="nav-item dropdown d-lg-none">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+            <i class="fas fa-user"></i>Account</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="signup.HTML" ><i class="fas fa-user-plus me-2"></i> Sign Up</a></li>
+
+            <li><a class="dropdown-item" href="login.html" ><i class="fas fa-sign-in-alt me-2"></i> Log In</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- ✅ Desktop Right Section (unchanged) -->
+      <ul class="navbar-nav ms-auto align-items-center d-none d-lg-flex">
+      
+        <li class="nav-item ms-3">
+          <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" data-bs-toggle="dropdown">
+            <i class="fas fa-user"></i> <span class="ms-1"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="signup.HTML"><i class="fas fa-user-plus me-2"></i> Sign Up</a></li>
+            <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-in-alt me-2"></i> Log In</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  
+    <div class="signup-container">
+        <div class="card shadow-lg p-4 p-md-5"> 
+
+            <h1 class="text-center mb-4 fs-3 fw-bold text-dark">Join AutoWorld Today</h1>
+
+            <form id="signupForm">
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <div class="input-group rounded-3">
+                            <span class="input-group-text border-end-0"><i class="fas fa-user"></i></span>
+                            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required class="form-control rounded-end-3">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="lastName" class="form-label">Last Name</label>
+                         <div class="input-group rounded-3">
+                            <span class="input-group-text border-end-0"><i class="fas fa-user"></i></span>
+                            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required class="form-control rounded-end-3">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <div class="input-group rounded-3">
+                        <span class="input-group-text border-end-0"><i class="fas fa-envelope"></i></span>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required class="form-control rounded-end-3">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <div class="input-group rounded-3">
+                        <span class="input-group-text border-end-0"><i class="fas fa-phone"></i></span>
+                        <input type="number" id="phone" name="phone" placeholder="Enter your phone number" required class="form-control rounded-end-3">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group rounded-3">
+                        <span class="input-group-text border-end-0"><i class="fas fa-lock"></i></span>
+                        <input type="password" id="password" name="password" placeholder="Create a password" required class="form-control border-end-0">
+                        <button type="button" class="input-group-text password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                            <i class="fas fa-eye" id="passwordIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <div class="input-group rounded-3">
+                        <span class="input-group-text border-end-0"><i class="fas fa-lock"></i></span>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required class="form-control border-end-0">
+                        <button type="button" class="input-group-text password-toggle" id="confirmPasswordToggle" aria-label="Toggle confirm password visibility">
+                            <i class="fas fa-eye" id="confirmPasswordIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <div class="form-check mb-2">
+                        <input type="checkbox" id="robotConfirm" name="robotConfirm" required class="form-check-input">
+                        <label for="robotConfirm" class="form-check-label text-secondary" style="font-size: 0.875rem;">
+                            Confirm you're not a robot
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" id="termsConfirm" name="termsConfirm" required class="form-check-input">
+                        <label for="termsConfirm" class="form-check-label text-secondary" style="font-size: 0.875rem;">
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg w-100 rounded-3 mt-4">
+                    Create Account
+                </button>
+            </form>
+
+            <div class="separator">
+                <div class="separator-line"></div>
+                <span class="separator-text">— or sign up with —</span>
+                <div class="separator-line"></div>
+            </div>
+
+            <div class="d-flex justify-content-center gap-3">
+                <button class="btn btn-light border social-btn" title="Sign up with Google">
+                    <i class="fab fa-google"></i>
+                </button>
+                <button class="btn btn-light border social-btn" title="Sign up with Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+                <button class="btn btn-light border social-btn" title="Sign up with Apple">
+                    <i class="fab fa-apple"></i>
+                </button>
+            </div>
+
+            <p class="text-center text-secondary mt-4 mb-0">
+                Already have an account? <a href="login.html">Log in</a>
+            </p>
+
+        </div>
+    </div>
+
+    <div id="messageBox" class="alert mb-0" role="alert"></div>
+
+    
+  
+<!-- Live Chat Button -->
+<button id="liveChatBtn" class="live-chat-btn"><i class="fas fa-comments"></i></button>
+
+<!-- Live Chat Box -->
+<div id="liveChatBox" class="live-chat-box">
+
+  <!-- Header -->
+  <div class="chat-header">
+    Live Chat
+    <button id="closeChatBtn">&times;</button>
+  </div>
+
+  <!-- Messages -->
+  <div id="chatMessages" class="chat-messages"></div>
+
+  <!-- Input -->
+  <div class="chat-input-area">
+    <input id="chatInput" type="text" placeholder="Type a message...">
+    <button id="sendBtn">Send</button>
+  </div>
+
+</div>
+
+
+    <footer class="footer-glass">
+  <div class="footer-top">
+    <div class="footer-container">
+
+      <!-- Company Info -->
+      <div class="footer-col company-info">
+        <img src="Imgs/logo.jpg" alt="Logo" class="footer-logo">
+        <p>Premium fashion for men & women. Elevate your style with our curated collections.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col quick-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Women</a></li>
+          <li><a href="#">Kids</a></li>
+          <li><a href="#">Accessories</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+
+      <!-- Social Media -->
+      <div class="footer-col social-media">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="footer-col newsletter">
+        <h4>Subscribe</h4>
+        <p>Get 10% off your first order</p>
+        <form id="newsletterForm">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Legal -->
+  <div class="footer-bottom">
+  </div>
+    </footer>
+
+    <script>
+        function togglePasswordVisibility(inputElement, iconElement) {
+            const isPassword = inputElement.type === 'password';
+            inputElement.type = isPassword ? 'text' : 'password';
+            if (isPassword) {
+                iconElement.classList.remove('fa-eye');
+                iconElement.classList.add('fa-eye-slash');
+            } else {
+                iconElement.classList.remove('fa-eye-slash');
+                iconElement.classList.add('fa-eye');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('signupForm');
+            const messageBox = document.getElementById('messageBox');
+            
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+
+            const passwordToggleBtn = document.getElementById('passwordToggle');
+            const passwordIcon = document.getElementById('passwordIcon');
+
+            const confirmPasswordToggleBtn = document.getElementById('confirmPasswordToggle');
+            const confirmPasswordIcon = document.getElementById('confirmPasswordIcon');
+
+            passwordToggleBtn.addEventListener('click', () => {
+                togglePasswordVisibility(passwordInput, passwordIcon);
+            });
+
+            confirmPasswordToggleBtn.addEventListener('click', () => {
+                togglePasswordVisibility(confirmPasswordInput, confirmPasswordIcon);
+            });
+
+            function showMessage(message, type = 'success') {
+                const bootstrapClass = type === 'success' ? 'alert-success' : 'alert-danger';
+                messageBox.textContent = message;
+                messageBox.classList.remove('alert-success', 'alert-danger');
+                messageBox.classList.add('alert', bootstrapClass);
+                messageBox.classList.add('show');
+                setTimeout(() => {
+                    messageBox.classList.remove('show');
+                }, 3000);
+            }
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    showMessage('Passwords do not match. Please check your entries.', 'error');
+                    confirmPasswordInput.focus();
+                    return;
+                }
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                delete data.password;
+                delete data.confirmPassword;
+                delete data.robotConfirm;
+                delete data.termsConfirm;
+                
+                try {
+                    localStorage.setItem('autoworld_signup_data', JSON.stringify(data));
+                    showMessage('Account data successfully saved to local storage.', 'success');
+                    console.log('Data saved to localStorage:', JSON.parse(localStorage.getItem('autoworld_signup_data')));
+                    form.reset();
+                } catch (error) {
+                    console.error('Error saving to local storage:', error);
+                    showMessage('Error saving data. Local storage may be full or unavailable.', 'error');
+                }
+            });
+        });
+    </script>
+   <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
